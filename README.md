@@ -6,5 +6,5 @@
 
 [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) ([C](https://github.com/shadowquark/leetcode/blob/master/LongestSubstringWithoutRepeatingCharacters.c), [Python](https://github.com/shadowquark/leetcode/blob/master/LongestSubstringWithoutRepeatingCharacters.py))
 
-[Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) ([C](https://github.com/shadowquark/leetcode/blob/master/MedianofTwoSortedArrays.c))
+[Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) ([C](https://github.com/shadowquark/leetcode/blob/master/MedianofTwoSortedArrays.c), [Python](https://github.com/shadowquark/leetcode/blob/master/LongestPalindromicSubstring.py))
 
