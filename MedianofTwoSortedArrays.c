@@ -38,7 +38,7 @@ double findMedianSortedArrays(
 	if (!nums2Size)
 		return (nums1[medianPos - 1] + nums1[medianPos - 1 + flag]) / 2.;
 	int begin1 = 0, begin2 = 0, length1 = nums1Size, length2 = nums2Size;
-	while (medianPos > 0)
+	for (;;)
 	{
 		int smaller = findPos(nums1 + begin1, length1, nums2[begin2]);
 		if (medianPos <= smaller)
@@ -73,7 +73,6 @@ double findMedianSortedArrays(
 //		printf("smaller: %d, medianPos: %d, begin: %d, length: %d\n", 
 //				smaller, medianPos, begin2, length2);
 	}
-	return 0;
 }
 int main()
 {
