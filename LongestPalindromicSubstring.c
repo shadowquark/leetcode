@@ -6,14 +6,15 @@
 char *output(const char *x, int tot)
 {
     int pos = 0;
-    char *y = (char*) malloc(sizeof(char*) * (tot + 1));
+    char *y = (char*) malloc(sizeof(char) * (tot + 1));
     for (int i = 1; i < 2 * tot; ++ i)
         if (x[i] != '\n')   y[pos ++] = x[i];
     y[tot] = '\0';
     return y;
 }
 
-char *longestPalindrome(char *s){
+char *longestPalindrome(char *s)
+{
     int pos = 0, maxP = 0, maxR = 0, global_max = 0, maxlen[2002];
     char ss[2002], *out;
     memset(ss, 0, sizeof(ss));
