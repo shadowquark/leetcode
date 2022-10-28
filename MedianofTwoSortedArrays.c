@@ -11,15 +11,13 @@ int findPos(int *a, int length, int num)
 	{
 		if (a[pos] <= num && (pos == length - 1 || a[pos + 1] > num))
 			return pos + 1;
-		if (a[pos] <= num)
-		{
-			begin = pos;
-			pos = (pos + end) / 2;
-		}
-		if (a[pos] > num)	
+		if (a[pos] > num)
 		{
 			end = pos;
 			pos = (begin + pos) / 2;
+		} else {
+			begin = pos;
+			pos = (pos + end) / 2;
 		}
 	}
 }
