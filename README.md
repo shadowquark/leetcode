@@ -8,3 +8,7 @@
 
 [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) ([C](https://github.com/shadowquark/leetcode/blob/master/MedianofTwoSortedArrays.c), [Python](https://github.com/shadowquark/leetcode/blob/master/MedianofTwoSortedArrays.py))
 
+[Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/) ([C](https://github.com/shadowquark/leetcode/blob/master/ZigzagConversionFast.c), [Python](https://github.com/shadowquark/leetcode/blob/master/ZigzagConversion.py))
+
+
+[Reverse Integer](https://leetcode.com/problems/reverse-integer/) ([C](https://github.com/shadowquark/leetcode/blob/master/ReverseInteger.c), [Python](https://github.com/shadowquark/leetcode/blob/master/ReverseInteger.py))
