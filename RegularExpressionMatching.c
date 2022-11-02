@@ -26,74 +26,21 @@ bool match(char *s1, int len1, char *s2, int len2, char previous)
 		return match(s1, len1, s2 + 1, len2 - 1, 0); 
 }
 // Leetcode version
-bool isMatch(char *s, char *p)
-{
-	int len1 = -1, len2 = -1;
-	while (s[++ len1]);
-	while (p[++ len2]);
-	char s1[21], s2[31];
-	for (int i = 0; i < len1; ++ i)
-		s1[i] = s[i];
-	for (int i = 0; i < len2; ++ i)
-		s2[i] = p[i];
-	s1[len1] = s2[len2] = 0;
-
-	bool f[21][31];
-	memset(f, 0, sizeof(f));
-	for (int i = 0; i <= len1; ++ i)
-		f[i][len2] = 1;
-	f[len1][len2] = 1;
-	if (s2[len2 - 1] == '*')
-		for (int i = len1; i > 0; -- i)
-			if (i == len1 || s1[i] == s1[i - 1])
-				f[i - 1][len2] = 1;
-			else
-				break;
-	for (int j = len2 - 1; j > 0; -- j)
-		if (s2[j] == '*' && f[len1][j + 1])
-			f[len1][j] = f[len1][j - 1] = 1;
-	for (int i = len1 - 1; i >= 0; -- i)
-		for (int j = len2 - 1; j >= 0; --j)
-		{
-			if (s2[j + 1] == '*')
-			{
-				f[i][j] = f[i][j + 1];
-				continue;
-			}
-			if (s2[j] == '.' || s2[j] == s1[i])
-			{
-				f[i][j] = f[i + 1][j + 1];
-				continue;
-			}
-			if (s2[j] != '*')
-				continue;
-			f[i][j] = f[i][j + 1] || f[i + 1][j + 1];
-		}
-	for (int i = 0; i <= len1; ++ i)
-	{
-		for (int j = 0; j <= len2; ++ j)
-			printf("%d, ", f[i][j]);
-		printf("\n");
-	}
-	return f[0][0];
-
-//	return match(s, len1, p, len2, 0);
-}
-//bool isMatch(char *s1, char *s2)
+//bool isMatch(char *s, char *p)
 //{
 //	int len1 = -1, len2 = -1;
-//	while (s1[++ len1]);
-//	while (s2[++ len2]);
+//	while (s[++ len1]);
+//	while (p[++ len2]);
+//	char s1[21], s2[31];
+//	for (int i = 0; i < len1; ++ i)
+//		s1[i] = s[i];
+//	for (int i = 0; i < len2; ++ i)
+//		s2[i] = p[i];
+//	s1[len1] = s2[len2] = 0;
 //
 //	bool f[21][31];
 //	memset(f, 0, sizeof(f));
 //	f[len1][len2] = 1;
-//	if (s2[len2 - 1] == '*')
-//		for (int i = len1; i > 0; -- i)
-//			if (i == len1 || s1[i] == s1[i - 1])
-//				f[i - 1][len2] = 1;
-//			else
-//				break;
 //	for (int j = len2 - 1; j > 0; -- j)
 //		if (s2[j] == '*' && f[len1][j + 1])
 //			f[len1][j] = f[len1][j - 1] = 1;
@@ -101,23 +48,48 @@ bool isMatch(char *s, char *p)
 //		for (int j = len2 - 1; j >= 0; --j)
 //		{
 //			if (s2[j + 1] == '*')
-//			{
-//				f[i][j] = f[i][j + 1];
-//				continue;
-//			}
+//				f[i][j] = f[i][j + 2];
 //			if (s2[j] == '.' || s2[j] == s1[i])
-//			{
-//				f[i][j] = f[i + 1][j + 1];
-//				continue;
-//			}
-//			if (s2[j] != '*')
-//				continue;
-//			f[i][j] = f[i][j + 1] || f[i + 1][j + 1];
+//				if (s2[j + 1] == '*')
+//					f[i][j] = (s1[i] == s1[i + 1])
+//								&& (f[i + 2][j + 2] || f[i + 1][j])
+//								|| (s2[j] == '.') && f[i + 1][j]
+//								 || f[i + 1][j + 2] || f[i][j];
+//				else
+//					f[i][j] = f[i + 1][j + 1];
 //		}
 //	return f[0][0];
-//
-////	return match(s1, len1, s2, len2, 0);
+////	return match(s, len1, p, len2, 0);
 //}
+bool isMatch(char *s1, char *s2)
+{
+	int len1 = -1, len2 = -1;
+	while (s1[++ len1]);
+	while (s2[++ len2]);
+
+	bool f[21][31];
+	memset(f, 0, sizeof(f));
+	f[len1][len2] = 1;
+	for (int j = len2 - 1; j > 0; -- j)
+		if (s2[j] == '*' && f[len1][j + 1])
+			f[len1][j] = f[len1][j - 1] = 1;
+	for (int i = len1 - 1; i >= 0; -- i)
+		for (int j = len2 - 1; j >= 0; --j)
+		{
+			if (s2[j + 1] == '*')
+				f[i][j] = f[i][j + 2];
+			if (s2[j] == '.' || s2[j] == s1[i])
+				if (s2[j + 1] == '*')
+					f[i][j] = (s1[i] == s1[i + 1])
+								&& (f[i + 2][j + 2] || f[i + 1][j])
+								|| (s2[j] == '.') && f[i + 1][j]
+								 || f[i + 1][j + 2] || f[i][j];
+				else
+					f[i][j] = f[i + 1][j + 1];
+		}
+	return f[0][0];
+//	return match(s1, len1, s2, len2, 0);
+}
 int main()
 {
 	FILE *fin = fopen("oo.xx", "r");
