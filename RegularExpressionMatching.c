@@ -51,10 +51,8 @@ bool match(char *s1, int len1, char *s2, int len2, char previous)
 //				f[i][j] = f[i][j + 2];
 //			if (s2[j] == '.' || s2[j] == s1[i])
 //				if (s2[j + 1] == '*')
-//					f[i][j] = (s1[i] == s1[i + 1])
-//								&& (f[i + 2][j + 2] || f[i + 1][j])
-//								|| (s2[j] == '.') && f[i + 1][j]
-//								 || f[i + 1][j + 2] || f[i][j];
+//					f[i][j] = (s1[i] == s1[i + 1] || s2[j] == '.')
+//								&& f[i + 1][j] || f[i + 1][j + 2] || f[i][j];
 //				else
 //					f[i][j] = f[i + 1][j + 1];
 //		}
@@ -80,10 +78,8 @@ bool isMatch(char *s1, char *s2)
 				f[i][j] = f[i][j + 2];
 			if (s2[j] == '.' || s2[j] == s1[i])
 				if (s2[j + 1] == '*')
-					f[i][j] = (s1[i] == s1[i + 1])
-								&& (f[i + 2][j + 2] || f[i + 1][j])
-								|| (s2[j] == '.') && f[i + 1][j]
-								 || f[i + 1][j + 2] || f[i][j];
+					f[i][j] = (s1[i] == s1[i + 1] || s2[j] == '.')
+								&& f[i + 1][j] || f[i + 1][j + 2] || f[i][j];
 				else
 					f[i][j] = f[i + 1][j + 1];
 		}
