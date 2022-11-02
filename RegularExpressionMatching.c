@@ -57,7 +57,7 @@ bool match(char *s1, int len1, char *s2, int len2, char previous)
 //					f[i][j] = f[i + 1][j + 1];
 //		}
 //	return f[0][0];
-////	return match(s, len1, p, len2, 0);
+////	return match(s1, len1, s2, len2, 0);
 //}
 // Local Version
 bool isMatch(char *s1, char *s2)
