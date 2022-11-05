@@ -21,3 +21,5 @@
 [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) ([C](https://github.com/shadowquark/leetcode/blob/master/IntegertoRoman.c), [Python](https://github.com/shadowquark/leetcode/blob/master/IntegertoRoman.py))
 
 [3Sum](https://leetcode.com/problems/3sum/) ([Python](https://github.com/shadowquark/leetcode/blob/master/3Sum.py))
+
+[3Sum Closest](https://leetcode.com/problems/3sum-closest) ([C](https://github.com/shadowquark/leetcode/blob/master/3SumClosest.c), [Python](https://github.com/shadowquark/leetcode/blob/master/3SumClosest.py))
