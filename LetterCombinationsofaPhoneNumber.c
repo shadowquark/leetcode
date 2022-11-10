@@ -9,25 +9,23 @@ char **letterCombinations(char *digits, int *returnSize)
 	int lens = strlen(digits);
 	returnSize = malloc(sizeof(int));
 	*returnSize = 0;
-	int a[8] = {3, 3, 3, 3, 3, 4, 3, 4}, pos = 0;
-	char *phone[8] = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-	char **out = malloc(sizeof(char));
+	int a[8] = {3, 3, 3, 3, 3, 4, 3, 4}, l = 0, r = 1;
+	char *phone[8] = {"abc", "def", "ghi", "jkl",
+						"mno", "pqrs", "tuv", "wxyz"};
+	char s[1000][10], **out;
 	for (int i = 0; i < lens; ++ i)
 	{
 		int key = *(digits + i) - '2';
-		*returnSize += a[key];
 		for (int j = 0; j < strlen(phone[i]); ++ j)
-		{
-			*(out + j) = malloc(sizeof(char) * i);
-			*(*(out + j) + i) = *(phone[i] + j);
-		}
-		printf("%s, ", *out + i);
-		printf("%s\n", *(out + 1) + i);
+			s[j][i] = *(phone[key] + j);
 	}
-	printf("%d\n", *returnSize);
-	*out = "abc";
-	*(out + 8) = "bcd";
-	printf("%s\n", *(out + 8));
+	for (int i = 0; i < 10; ++ i)
+		printf("%s\n", s[i]);
+	
+//	printf("%d\n", *returnSize);
+//	*out = "abc";
+//	*(out + 8) = "bcd";
+//	printf("%s\n", *(out + 8));
 }
 int main()
 {
