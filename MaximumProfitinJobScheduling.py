@@ -30,13 +30,12 @@ class Solution:
         if (y >= x[-1]):
             return n
         l, r = 0, n - 1
-        while 1:
+        while l < r:
             if y < x[(l + r) // 2]:
                 r = (l + r) // 2 
             else:
                 l = (l + r) // 2 + 1
-            if (y < x[l]):
-                return l - 1
+        return l - 1
     def jobScheduling(
         self, startTime: List[int], endTime: List[int], profit: List[int]
     ) -> int:

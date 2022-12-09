@@ -28,14 +28,14 @@ int findlast(int y, int *x, int n)
 {
 	if (y >= x[n])	return n;
 	int l = 0, r = n;
-	for (;;)
+	while (l < r)
 	{
 		if (y < x[(l + r) / 2])
 			r = (l + r) / 2;
 		else
 			l = (l + r) / 2 + 1;
-		if (y < x[l])	return l - 1;
 	}
+	return l - 1;
 }
 int jobScheduling(int *startTime, int startTimeSize,
 					int *endTime, int endTimeSize,
