@@ -10,15 +10,11 @@ class Solution:
         end = end.next
         head = previous
         tail = previous.next
-        temp = 0
         while tail != end:
             forward = tail.next
             tail.next = head
             head = tail
             tail = forward
-            temp += 1
-            if temp == 10:
-                break
         previous.next = end
         return begin, end, previous
     def reverseKGroup(
@@ -33,9 +29,7 @@ class Solution:
         if tot < k:
             return head
         begin, end = head, out
-        printList(out)
         begin, end, previous = Solution.reverse(begin, end)
-        printList(out)
         while 1:
             begin = end
             tail, tot = end, 0
@@ -47,26 +41,25 @@ class Solution:
             if tot < k:
                 return out
             previous.next = end
-            printList(out)
             begin, end, previous = Solution.reverse(begin, end)
-            printList(out)
 
-def printList(x):
+def printList(x, flag = 0):
     temp = x
     tot = 0
     while temp:
         tot += 1
-#       print(x.val)
+        if flag:
+            print(temp.val)
         temp = temp.next
-    print(tot, -1)
+    print(tot, "list")
 
 fin = open("oo.xx", "r")
 fout = open("xx.oo", "w")
 
 k = int(fin.readline())
-print(k, -1)
+print(k, "intput")
 line = [int(x) for x in fin.readline().split(',')]
-print(len(line))
+print(len(line), "input")
 head = tail = ListNode()
 for x in line:
     tail.next = ListNode(x)
@@ -77,7 +70,6 @@ tot = 0
 while out:
     tot += 1
 #   print(out.val)
-#   fout.write(str(out.val))
+    fout.write(str(out.val))
     out = out.next
-print(tot, tot)
 
